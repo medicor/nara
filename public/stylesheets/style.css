@@ -1,0 +1,4 @@
+
+h1,h2,h3,p,span,div	{ font-family: 'Signika', sans-serif; }
+body, .btn { font-size: 17px; }
+.jumbotron { background: #e4e4d6 url(/images/header-tile.png) repeat; color: #8a8a74; text-shadow: white 1px 1px 3px; }
