@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node server.js"
   },
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.8.3",
     "debug": "^0.7.4",
