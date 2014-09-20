@@ -3,15 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "PORT=3000; node app.js"
+    "start": "PORT=3000 node app.js"
   },
   "dependencies": {
-    "body-parser": ">1.0.0",
-    "debug": ">0.7.4",
-    "express": ">4.2.0",
-    "express-handlebars": ">1.0.0",
-    "moment": ">2.7.0",
-    "morgan": ">1.0.0",
-    "static-favicon": ">1.0.0"
+    "body-parser": "^1.8.3",
+    "debug": "^0.7.4",
+    "express": "^4.2.0",
+    "express-handlebars": "^1.0.0",
+    "moment": "^2.8.3"
   }
 }

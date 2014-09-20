@@ -1,6 +1,6 @@
 var express = require('express'),
 	path = require('path'),
-	favicon = require('static-favicon'),
+//	favicon = require('static-favicon'),
 //	logger = require('morgan'),
 	parser = require('body-parser'),
 	moment = require('moment'),
@@ -31,9 +31,9 @@ app.engine('handlebars', handlebars.engine);
 
 //app.use(logger('dev'));
 //app.use(cors());
-app.use(favicon());
+//app.use(favicon());
+app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
-app.use(parser.urlencoded());
 app.use(express.static(__dirname + '/public'));
 
 app.use('/users', function(req, res) {
@@ -69,4 +69,4 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);
