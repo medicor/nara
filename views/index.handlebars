@@ -1,0 +1,42 @@
+<div class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-navbar">
+			<ul class="nav navbar-nav">
+				<li class="{{ iif currentURL '/home' 'active' }}"><a href="/home">Home</a></li>
+				<li class="{{ iif currentURL '/bylaws' 'active' }}"><a href="/bylaws">Bylaws</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="jumbotron">
+	<div class="container">
+		<h1>{{ siteTitle }}</h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+		<!--
+			<div class="pull-right" style="padding: 4em 0 1em 1em">
+				<img class="media-object" src="images/image-four-stems.png">
+			</div>
+		-->
+			{{{ pageContent }}}
+		</div>
+		<div class="col-md-3">
+			<!--<img class="pull-right" style="margin-top: 4em" src="images/image-four-stems.png">-->
+		</div>
+	</div>
+	<hr>
+	<footer>
+		<p>&copy; {{ now "YYYY" }} {{ siteTitle }}</p>
+	</footer>
+</div>
