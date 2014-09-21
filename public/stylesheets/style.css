@@ -1,4 +1,10 @@
 
 h1,h2,h3,p,span,div	{ font-family: 'Signika', sans-serif; }
 body, .btn { font-size: 17px; }
-.jumbotron { background: #e4e4d6 url(/images/header-tile.png) repeat; color: #8a8a74; text-shadow: white 1px 1px 3px; }
+.jumbotron { 
+    background: 
+        linear-gradient(to bottom, rgba(0,0,255,0.3) 0px, rgba(0,0,255,0.3) 10px, rgba(255,0,0,0.3) 10px, rgba(255,0,0,0.3) 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 30px, rgba(255,255,0,0.3) 30px, rgba(255,255,0,0.3) 40px, transparent 0px),
+        url(/images/header-tile.png);
+    background-repeat: repeat-x;
+    color: #8a8a74; text-shadow: white 1px 1px 3px; 
+}
