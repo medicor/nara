@@ -1,15 +1,27 @@
 {
   "name": "nara",
+  "description": "Nordic Arthroplasty Register Association",
   "version": "0.1.0",
   "scripts": {
     "start": "node server.js"
   },
-  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medicor/NARA.git"
+  },
+  "engines": {
+    "node": ">=0.10.29",
+    "npm": ">=1.4.23"
+  },
   "dependencies": {
-    "body-parser": "1.8.3",
-    "debug": "0.7.4",
-    "express": "4.9.4",
-    "express-handlebars": "1.1.0",
-    "moment": "2.8.3"
-  }
+    "body-parser": ">=1.8.3",
+    "debug": ">=0.7.4",
+    "express": ">=4.9.4",
+    "express-handlebars": ">=1.1.0",
+    "moment": ">=2.8.3"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "private": true,
+  "main": "server.js"
 }
