@@ -12,7 +12,7 @@ var express = require('express'),
 		layoutsDir: __dirname + '/views/layouts/',
 		partialsDir: __dirname + '/views/partials/',
 		helpers: {
-			now: function (aFormat) { 
+			now: function (aFormat) {
 				return moment().format(aFormat);
 			},
 			iif: function(aLeftHand, aRightHand, aString) {
@@ -46,8 +46,8 @@ app.use('/', function(req, res) {
 		return;
 	}
 	contentProvider.find(req.url, function(aContent) {
-		res.render('index', { 
-			siteName: 'NARA', 
+		res.render('index', {
+			siteName: 'NARA',
 			siteTitle: 'Nordic Arthroplasty Register Association',
 			pageContent: aContent,
 			currentURL: req.url
@@ -69,4 +69,4 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-app.listen(process.env.OPENSHIFT_INTERNAL_PORT || 3000, process.env.OPENSHIFT_NODEJS_IP || "192.168.1.89");
+app.listen(process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 3000, process.env.ADDRESS || process.env.IP || process.env.OPENSHIFT_NODEJS_IP || "192.168.1.89");
