@@ -3,7 +3,7 @@
   "description": "Nordic Arthroplasty Register Association",
   "version": "0.1.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,5 @@
   "devDependencies": {},
   "bundleDependencies": [],
   "private": true,
-  "main": "server.js"
+  "main": "app.js"
 }
