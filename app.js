@@ -20,7 +20,6 @@ var express = require('express'),
 			}
 		}
 	}),
-	
 	ContentProvider = require('./provider').ContentProvider,
 	contentProvider = new ContentProvider();
 

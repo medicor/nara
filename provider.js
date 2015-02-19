@@ -1,14 +1,11 @@
 var ContentProvider = function() {
-	
-};
+	var ForerunnerDB = require('forerunnerdb'),
+		database = new ForerunnerDB(),
+		posts = database.collection('posts');
 
-ContentProvider.prototype.find = function(aURL, aCallback)  {
-	var content;
-	
-	switch (aURL) {
-		case '/':
-		case '/home':
-			content = '\
+	posts.setData([{
+		path: '/home',
+		content: '\
 			<h2>About us</h2>\
 			<div class="pull-right" style="margin: 0 0 1em 1em"><img src="images/image-four-stems.png"></div>\
 			<p>The Nordic countries are world leading in the field of National Quality\
@@ -34,10 +31,10 @@ ContentProvider.prototype.find = function(aURL, aCallback)  {
 				Nordic data in their research activity.</p>\
 			<p>\
 				<a class="btn btn-default" href="bylaws" role="button">View bylaws &raquo;</a>\
-			</p>';
-			break;
-		case '/bylaws':
-			content = '\
+			</p>'
+	},{
+		path: '/bylaws',
+		content: '\
 			<h2>The NARA collaboration contract</h2>\
 			<h4>Version 4, 12th of December 2007</h4>\
 			<ul>\
@@ -71,18 +68,29 @@ ContentProvider.prototype.find = function(aURL, aCallback)  {
 				<li>The meeting expenses are covered by the host register. The travel expenses\
 					to meetings are covered by the separate national registers.</li>\
 			</ul>'
-			break;
-		case '/todo':
-			content =  '\
+	},{
+		path: '/todo',
+		content: '\
 			<p>TODO:\
 			<ul>\
-				<li>Bakgrundstextur till header.</li>\
-				<li>Flytta sidinnehåll till MondoDB. Eller inte ...</li>\
+				<li>Nothing left to do right now, really.</li>\
 			</ul>\
-			</p>';
-			break;
+			</p>'
+	}]);
+	
+	this.database = database;
+};
+
+ContentProvider.prototype.find = function(aURL, aCallback)  {
+	var posts = this.database.collection('posts'),
+		post;
+
+	post = posts.find({path: aURL});
+	if (post.length === 0) {
+		aCallback('<h1>Sorry. No can do.</h1>... but we some fine content <a href="/home">here</a>');
+	} else {
+		aCallback(post[0].content);
 	}
-	aCallback(content);
-}
+};
 
 exports.ContentProvider = ContentProvider;
