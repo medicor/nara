@@ -1,11 +1,11 @@
 var ContentProvider = function() {
-	var ForerunnerDB = require('forerunnerdb'),
-		database = new ForerunnerDB(),
-		posts = database.collection('posts');
+	var Firebase = require("firebase"),
+		database = new Firebase("https://nara.firebaseio.com/")
+/*		,
+		posts = database.child('posts');
 
-	posts.setData([{
-		path: '/home',
-		content: '\
+	posts.set({
+		home: '\
 			<h2>About us</h2>\
 			<div class="pull-right" style="margin: 0 0 1em 1em"><img src="images/image-four-stems.png"></div>\
 			<p>The Nordic countries are world leading in the field of National Quality\
@@ -31,10 +31,8 @@ var ContentProvider = function() {
 				Nordic data in their research activity.</p>\
 			<p>\
 				<a class="btn btn-default" href="bylaws" role="button">View bylaws &raquo;</a>\
-			</p>'
-	},{
-		path: '/bylaws',
-		content: '\
+			</p>',
+		bylaws: '\
 			<h2>The NARA collaboration contract</h2>\
 			<h4>Version 4, 12th of December 2007</h4>\
 			<ul>\
@@ -67,30 +65,27 @@ var ContentProvider = function() {
 					details around upcoming meetings.</li>\
 				<li>The meeting expenses are covered by the host register. The travel expenses\
 					to meetings are covered by the separate national registers.</li>\
-			</ul>'
-	},{
-		path: '/todo',
-		content: '\
+			</ul>',
+		todo: '\
 			<p>TODO:\
 			<ul>\
 				<li>Nothing left to do right now, really.</li>\
 			</ul>\
 			</p>'
-	}]);
-	
+	});
+*/
 	this.database = database;
 };
 
-ContentProvider.prototype.find = function(aURL, aCallback)  {
-	var posts = this.database.collection('posts'),
-		post;
-
-	post = posts.find({path: aURL});
-	if (post.length === 0) {
-		aCallback('<h1>Sorry. No can do.</h1>... but we some fine content <a href="/home">here</a>');
-	} else {
-		aCallback(post[0].content);
-	}
+ContentProvider.prototype.find = function(aURL, aCallback) {
+	this.database.child('posts' + aURL).on('value',
+		function(aSnapshot) {
+			aCallback(aSnapshot.val());
+		}, 
+		function () {
+			aCallback('<h1>Sorry. No can do.</h1>... but we have some fine content <a href="/home">here</a>?');
+		}
+	);	
 };
 
 exports.ContentProvider = ContentProvider;
