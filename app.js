@@ -34,20 +34,17 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(parser.json());
 app.use(express.static(__dirname + '/static'));
 
-app.use('/users', function(req, res) {
-	res.send('respond with a resource');
-});
-
 app.use('/', function(req, res) {
 	if (req.url === '/') {
 		res.redirect('/home');
 		return;
 	}
-	contentProvider.find(req.url, function(aContent) {
+	console.log('Rendering ' + req.url);
+	contentProvider.find(req.url.substring(1), function(aPost) {
 		res.render('index', {
 			siteName: 'NARA',
 			siteTitle: 'Nordic Arthroplasty Register Association',
-			pageContent: aContent,
+			pageContent: aPost,
 			currentURL: req.url
 		});
 	});

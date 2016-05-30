@@ -1,6 +1,7 @@
 var ContentProvider = function() {
-	this.mongo = require('mongodb').MongoClient;
-  
+	this.request = require('request');
+//	this.mongo = require('mongodb').MongoClient;
+
 	// Create pages with content.
 	/*
 	this.mongo.connect('mongodb://cloud.medicor.se:27017/nara', function(anError, aDatabase) {
@@ -94,7 +95,7 @@ var ContentProvider = function() {
 	});
 	*/
 };
-
+/*
 ContentProvider.prototype.find = function(aURL, aCallback) {
 	this.mongo.connect('mongodb://cloud.medicor.se:27017/nara', function(anError, aDatabase) {
 	    if (anError || !aDatabase) {
@@ -102,12 +103,26 @@ ContentProvider.prototype.find = function(aURL, aCallback) {
 	    }
 	    aDatabase.collection('posts').findOne({ path: aURL }, function(anError, aPost) {
 	    	if (!aPost) {
-				aCallback('<h1>Sorry. No can do.</h1><p>... but we have some fine content <a href="/home">here</a>?</p>');
+				aCallback('<h1>Sorry. No can do.</h1><p>... but we have some fine content <a href="/home">here</a>!</p>');
 	    	} else {
 				aCallback(aPost.content);
 	    	}
 			aDatabase.close();
 		});
+	});
+};
+*/
+
+ContentProvider.prototype.find = function(aSlug, aCallback) {
+	this.request.get({
+		url: 'https://cdn.contentful.com/spaces/67syl9ujp44h/entries?access_token=868893066233d012c69668ee330b3ac9404d137f6192c23a4897a7d230aa3a81&content_type=2wKn6yEnZewu2SCCkus4as&fields.slug=' + aSlug, 
+		json: true
+	},
+	function(anError, aResponse, anObject) {
+		if (!anError && aResponse.statusCode == 200) {
+			console.log(anObject.items[0].fields);
+			aCallback(anObject.items[0].fields);
+		}
 	});
 };
 
