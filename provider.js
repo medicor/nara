@@ -1,6 +1,6 @@
 var ContentProvider = function() {
 	var contentful = require('contentful');
-	
+
 	this.client = contentful.createClient({
 		accessToken: '868893066233d012c69668ee330b3ac9404d137f6192c23a4897a7d230aa3a81',
 		space: '67syl9ujp44h'
@@ -91,7 +91,7 @@ var ContentProvider = function() {
 					</ul>\
 					</p>'
 			}];
-			
+
 		    if (anError || !aCollection) {
 				console.log(anError);
 				return;
@@ -151,15 +151,15 @@ ContentProvider.prototype.find = function(aSlug, aCallback) {
 		}
 		else {
 			aCallback({
-				title: '<h1>Sorry. No can do!</h1>',
-				body: '<p>... but we have some fine content <a href="/home">here</a>!</p>'
+				title: '# Sorry. No can do!',
+				body: '... but we have some fine content [here](/home)!'
 			});
 		}
 	}).catch(aReason => {
 		console.log(aReason);
 		aCallback({
-			title: '<h1>Hmmm ...</h1>',
-			body: '<p>... some strange error occured ... hmmm.</p>'
+			title: '# Hmmm ...',
+			body: '... some strange error occured ... hmmm.'
 		});
 	});
 };

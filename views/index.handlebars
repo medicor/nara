@@ -25,7 +25,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>{{{ pageContent.title }}}</h2>
-			{{{ pageContent.body }}}
+			{{#if pageContent.splash}}
+				<img src="{{ pageContent.splash.fields.file.url }}" alt="{{ pageContent.splash.fields.title }}" class="pull-right" style="padding: 0 0 10px 10px">
+			{{/if}}
+			{{{ md pageContent.body }}}
 		</div>
 	</div>
 	<hr>

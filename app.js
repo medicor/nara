@@ -16,7 +16,12 @@ var express = require('express'),
 			},
 			iif: function(aLeftHand, aRightHand, aString) {
 				return aLeftHand === aRightHand ? aString : '';
-			}
+			},
+			log: function(aMessage) {
+				console.log(aMessage);
+				return '';
+			},
+			md: require('marked')
 		}
 	}),
 	ContentProvider = require('./provider').ContentProvider,
