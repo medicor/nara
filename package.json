@@ -20,8 +20,7 @@
     "express": ">=4.9.4",
     "express-handlebars": ">=1.1.0",
     "marked": "^0.3.6",
-    "moment": ">=2.8.3",
-    "mongodb": "^1.4.31"
+    "moment": ">=2.8.3"
   },
   "devDependencies": {},
   "bundleDependencies": [],
