@@ -69,4 +69,4 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-app.listen(process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 3000, process.env.ADDRESS || process.env.IP || process.env.OPENSHIFT_NODEJS_IP || "192.168.1.89");
+app.listen(process.env.PORT || 3000, process.env.ADDRESS || process.env.IP || "0.0.0.0");
